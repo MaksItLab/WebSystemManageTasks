@@ -3,13 +3,8 @@
     /// <summary>
     /// Пользователь
     /// </summary>
-    public class User
+    public class User : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор пользователя
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Имя пользователя
         /// </summary>
@@ -38,19 +33,30 @@
         /// <summary>
         /// Идентификатор проекта, за которым закреплен пользователь
         /// </summary>
-        public Guid ProjectId { get; set; }
+        public Guid? ProjectId { get; set; }
 
         /// <summary>
         /// Идентификатор роли пользователя
         /// </summary>
-        public Guid RoleId { get; set; }
+        public Guid? RoleId { get; set; }
 
         #region Навигационный свойства
-        public Role Role { get; set; }
 
-        public Project Project { get; set; }
+        /// <summary>
+        /// Роль пользователя
+        /// </summary>
+        public Role? Role { get; set; }
 
-        public List<Task> Tasks { get; set; }
+        /// <summary>
+        /// Проект, на котором находится пользователь
+        /// </summary>
+        public Project? Project { get; set; }
+
+        /// <summary>
+        /// Задачи, закрепленный за пользователем
+        /// </summary>
+        public List<Task>? Tasks { get; set; }
+
         #endregion
     }
 }

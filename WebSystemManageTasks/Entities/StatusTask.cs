@@ -3,20 +3,20 @@
     /// <summary>
     /// Класс статуса задачи
     /// </summary>
-    public class StatusTask
+    public class StatusTask : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор статуса задачи
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Название статуса задачи
         /// </summary>
         public string Name { get; set; }
 
         #region Навигационные свойства
-        public List<Task> Tasks { get; set; }
+
+        /// <summary>
+        /// Задачи определенного статуса
+        /// </summary>
+        public List<Task>? Tasks { get; set; }
+
         #endregion
     }
 }

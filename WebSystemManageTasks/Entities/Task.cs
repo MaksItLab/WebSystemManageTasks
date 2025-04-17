@@ -3,13 +3,8 @@
     /// <summary>
     /// Класс задачи
     /// </summary>
-    public class Task
+    public class Task : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор задачи
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Название задачи
         /// </summary>
@@ -38,14 +33,30 @@
         /// <summary>
         /// Идентификатор пользователя
         /// </summary>
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
+
+        /// <summary>
+        /// Номер задачи в секции
+        /// </summary>
+        public int Order {  get; set; }
 
         #region Навигационные свойства
+
+        /// <summary>
+        /// Статус задачи
+        /// </summary>
         public StatusTask Status { get; set; }
 
+        /// <summary>
+        /// Проект, в котором находится задача
+        /// </summary>
         public Project Project { get; set; }
 
-        public User User { get; set; }
+        /// <summary>
+        /// Пользователь, закрепленный за задачей
+        /// </summary>
+        public User? User { get; set; }
+
         #endregion
     }
 }

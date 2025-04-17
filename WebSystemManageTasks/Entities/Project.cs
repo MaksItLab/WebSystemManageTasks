@@ -3,22 +3,25 @@
     /// <summary>
     /// Класс проекта
     /// </summary>
-    public class Project
+    public class Project : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор проекта
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Название проекта
         /// </summary>
         public string Name { get; set; }
 
         #region Навигационные свойства
-        public List<Task> Tasks { get; set; }
 
+        /// <summary>
+        /// Задачи проекта
+        /// </summary>
+        public List<Task>? Tasks { get; set; }
+
+        /// <summary>
+        /// Пользователи, находящиеся на проекте
+        /// </summary>
         public List<User> Users { get; set; }
+
         #endregion
     }
 }
