@@ -8,7 +8,7 @@
         /// <summary>
         /// Наименование роли
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         #region Навигационные свойства
 

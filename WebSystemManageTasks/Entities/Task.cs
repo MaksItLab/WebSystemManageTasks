@@ -8,12 +8,12 @@
         /// <summary>
         /// Название задачи
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// Описание задачи
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Время окончания задачи
