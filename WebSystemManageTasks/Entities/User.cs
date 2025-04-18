@@ -38,7 +38,7 @@
         /// <summary>
         /// Идентификатор роли пользователя
         /// </summary>
-        public Guid? RoleId { get; set; }
+        public Guid RoleId { get; set; }
 
         #region Навигационный свойства
 

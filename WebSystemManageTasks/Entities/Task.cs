@@ -38,19 +38,19 @@
         /// <summary>
         /// Номер задачи в секции
         /// </summary>
-        public int Order {  get; set; }
+        public int Order { get; set; }
 
         #region Навигационные свойства
 
         /// <summary>
         /// Статус задачи
         /// </summary>
-        public StatusTask Status { get; set; }
+        public StatusTask? Status { get; set; }
 
         /// <summary>
         /// Проект, в котором находится задача
         /// </summary>
-        public Project Project { get; set; }
+        public Project? Project { get; set; }
 
         /// <summary>
         /// Пользователь, закрепленный за задачей

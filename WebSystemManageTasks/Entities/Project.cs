@@ -20,7 +20,7 @@
         /// <summary>
         /// Пользователи, находящиеся на проекте
         /// </summary>
-        public List<User> Users { get; set; }
+        public List<User>? Users { get; set; }
 
         #endregion
     }
