@@ -8,27 +8,27 @@
         /// <summary>
         /// Имя пользователя
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// Фамилия пользователя
         /// </summary>
-        public string Surname { get; set; }
+        public string Surname { get; set; } = default!;
 
         /// <summary>
         /// Email пользователя
         /// </summary>
-        public string Email { get; set; }
+        public string Email { get; set; } = default!;
 
         /// <summary>
         /// Логин пользователя
         /// </summary>
-        public string Login {  get; set; }
+        public string Login {  get; set; } = default!;
 
         /// <summary>
         /// Хэш пароля пользователя
         /// </summary>
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; } = default!;
 
         /// <summary>
         /// Идентификатор проекта, за которым закреплен пользователь
