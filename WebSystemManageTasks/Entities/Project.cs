@@ -15,7 +15,7 @@
         /// <summary>
         /// Задачи проекта
         /// </summary>
-        public List<Task>? Tasks { get; set; }
+        public List<ProjectTask>? Tasks { get; set; }
 
         /// <summary>
         /// Пользователи, находящиеся на проекте
