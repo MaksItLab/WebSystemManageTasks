@@ -18,9 +18,16 @@ namespace WebSystemManageTasks.Controllers
         /// <param name="service">Сервис аутентификации</param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public async Task<IResult> LoginAsync([FromQuery] LoginRequest request, [FromServices] IAuthService service)
+        public async Task<IResult> LoginAsync(
+            [FromQuery] LoginRequest request, 
+            [FromServices] IAuthService service)
         {
             var token = await service.LoginAsync(request.Login, request.Password);
+
+            Response.Cookies.Append("token", token);
+            
+            
+
             return Results.Ok(token);
         }
 
