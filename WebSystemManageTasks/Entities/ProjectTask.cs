@@ -3,7 +3,7 @@
     /// <summary>
     /// Класс задачи
     /// </summary>
-    public class Task : BaseEntity
+    public class ProjectTask : BaseEntity
     {
         /// <summary>
         /// Название задачи
