@@ -1,4 +1,5 @@
 ﻿using WebSystemManageTasks.Entities;
+using WebSystemManageTasks.Interfaces.Providers;
 using WebSystemManageTasks.Interfaces.Services;
 
 namespace WebSystemManageTasks.Services
@@ -9,14 +10,14 @@ namespace WebSystemManageTasks.Services
     public class AuthService : IAuthService
     {
         private readonly IPasswordHasherService _passwordHasher;
-        private readonly IJwtProviderService _jwtProvider;
+        private readonly IJwtProvider _jwtProvider;
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="passwordHasher">Сервис генерации хэша пароля</param>
         /// <param name="jwtProvider">Сервис генерации Jwt-токена</param>
-        public AuthService(IPasswordHasherService passwordHasher, IJwtProviderService jwtProvider)
+        public AuthService(IPasswordHasherService passwordHasher, IJwtProvider jwtProvider)
         {
             _passwordHasher = passwordHasher;
             _jwtProvider = jwtProvider;

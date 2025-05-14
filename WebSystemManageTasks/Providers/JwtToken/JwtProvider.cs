@@ -4,18 +4,22 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebSystemManageTasks.Entities;
-using WebSystemManageTasks.Interfaces.Services;
+using WebSystemManageTasks.Interfaces.Providers;
 
-namespace WebSystemManageTasks.JwtProvider
+namespace WebSystemManageTasks.Providers.JwtToken
 {
     /// <summary>
-    /// Сервис для генерации Jwt-токена
+    /// Провайдер для генерации Jwt-токена
     /// </summary>
-    public class JwtProviderService : IJwtProviderService
+    public class JwtProvider : IJwtProvider
     {
         private readonly JwtOptions _jwtOptions;
 
-        public JwtProviderService(IOptions<JwtOptions> jwtOptions)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="jwtOptions"></param>
+        public JwtProvider(IOptions<JwtOptions> jwtOptions)
         {
             _jwtOptions = jwtOptions.Value;
         }
@@ -27,9 +31,6 @@ namespace WebSystemManageTasks.JwtProvider
         /// <returns>Jwt-токен</returns>
         public string GenerateToken(User user)
         {
-            string secretKey = "This is secret key, secret key 123!@#$%^&*()_+";
-            int expiresHours = 3;
-
             Claim[] claims = [new("userId", user.Id.ToString())];
 
             var signingCredentials = new SigningCredentials(

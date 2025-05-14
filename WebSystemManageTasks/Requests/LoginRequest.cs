@@ -8,11 +8,11 @@
         /// <summary>
         /// Логин пользователя
         /// </summary>
-        public string Login { get; set; }
+        public string Login { get; set; } = default!;
 
         /// <summary>
         /// Пароль пользователя
         /// </summary>
-        public string Password { get; set; }
+        public string Password { get; set; } = default!;
     }
 }

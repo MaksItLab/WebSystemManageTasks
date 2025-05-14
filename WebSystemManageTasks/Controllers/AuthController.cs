@@ -47,6 +47,8 @@ namespace WebSystemManageTasks.Controllers
                 request.Name, 
                 request.Surname);
 
+            Response.Cookies.Append("token", token);
+
             return Results.Ok(token);
         }
     }

@@ -1,11 +1,11 @@
 ﻿using WebSystemManageTasks.Entities;
 
-namespace WebSystemManageTasks.Interfaces.Services
+namespace WebSystemManageTasks.Interfaces.Providers
 {
     /// <summary>
     /// Интерфейс для генерации Jwt-токена
     /// </summary>
-    public interface IJwtProviderService 
+    public interface IJwtProvider
     {
         /// <summary>
         /// Генерация Jwt-токена

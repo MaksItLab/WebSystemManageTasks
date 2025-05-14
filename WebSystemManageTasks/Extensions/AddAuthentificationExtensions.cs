@@ -3,12 +3,20 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
-using WebSystemManageTasks.JwtProvider;
+using WebSystemManageTasks.Providers.JwtToken;
 
 namespace WebSystemManageTasks.Extensions
 {
+    /// <summary>
+    /// Статический класс расширения для аутентификации
+    /// </summary>
     public static class AddAuthentificationExtensions
     {
+        /// <summary>
+        /// Статический метод расширения, настраивающий аутентификацию
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="jwtOptions"></param>
         public static void AddJwtAuthentication(
             this IServiceCollection services,
             IOptions<JwtOptions> jwtOptions)
