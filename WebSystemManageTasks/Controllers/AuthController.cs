@@ -26,8 +26,6 @@ namespace WebSystemManageTasks.Controllers
 
             Response.Cookies.Append("token", token);
             
-            
-
             return Results.Ok(token);
         }
 

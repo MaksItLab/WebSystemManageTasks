@@ -1,5 +1,6 @@
 ﻿using WebSystemManageTasks.Entities;
 using WebSystemManageTasks.Interfaces.Providers;
+using WebSystemManageTasks.Interfaces.Repositories;
 using WebSystemManageTasks.Interfaces.Services;
 
 namespace WebSystemManageTasks.Services
@@ -11,16 +12,21 @@ namespace WebSystemManageTasks.Services
     {
         private readonly IPasswordHasherService _passwordHasher;
         private readonly IJwtProvider _jwtProvider;
+        private readonly IUserRepository _userRepository;
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="passwordHasher">Сервис генерации хэша пароля</param>
         /// <param name="jwtProvider">Сервис генерации Jwt-токена</param>
-        public AuthService(IPasswordHasherService passwordHasher, IJwtProvider jwtProvider)
+        public AuthService(
+            IPasswordHasherService passwordHasher, 
+            IJwtProvider jwtProvider,
+            IUserRepository userRepository)
         {
             _passwordHasher = passwordHasher;
             _jwtProvider = jwtProvider;
+            _userRepository = userRepository;
         }
 
         /// <summary>
@@ -39,7 +45,7 @@ namespace WebSystemManageTasks.Services
             if (password == null) 
                 throw new ArgumentNullException("Введите пароль");
 
-            var user = Data.Users.FirstOrDefault(x => x.Login == login);
+            var user = await _userRepository.ExistsByLoginAsync(login);
 
             if (user == null) 
                 throw new ArgumentException("Пользователь не существует");
@@ -68,7 +74,7 @@ namespace WebSystemManageTasks.Services
             if (login == null || password == null || email == null || name == null || surname == null) 
                 throw new ArgumentNullException("Введите данные");
 
-            var user = Data.Users.FirstOrDefault(x => x.Login == login);
+            var user = await _userRepository.ExistsByLoginAsync(login);
 
             if (user != null)
                 throw new Exception("Пользователь с таким логином уже существует");
@@ -84,7 +90,7 @@ namespace WebSystemManageTasks.Services
                 Surname = surname
             };
 
-            Data.Users.Add(newUser);
+            await _userRepository.AddAsync(newUser);
 
             token = _jwtProvider.GenerateToken(newUser);
 
