@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.Extensions.Options;
-using System;
 using WebSystemManageTasks.Extensions;
 using WebSystemManageTasks.Interfaces.Providers;
 using WebSystemManageTasks.Interfaces.Services;
