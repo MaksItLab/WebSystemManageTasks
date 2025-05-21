@@ -42,6 +42,7 @@ namespace WebSystemManageTasks.Repositories
             var oldTask = Data.ProjectTasks.FirstOrDefault(x => x.Id == task.Id);
 
             Data.ProjectTasks.Remove(oldTask);
+            
             Data.ProjectTasks.Add(task);
 
             return Task.CompletedTask;
