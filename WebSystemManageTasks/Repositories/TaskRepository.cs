@@ -4,7 +4,7 @@ using WebSystemManageTasks.Interfaces.Repositories;
 namespace WebSystemManageTasks.Repositories
 {
     /// <summary>
-    /// Репозиторий пользователя
+    /// Репозиторий задачи
     /// </summary>
     public class TaskRepository : ITaskRepository
     {
@@ -42,6 +42,7 @@ namespace WebSystemManageTasks.Repositories
             var oldTask = Data.ProjectTasks.FirstOrDefault(x => x.Id == task.Id);
 
             Data.ProjectTasks.Remove(oldTask);
+            Data.ProjectTasks.Add(task);
 
             return Task.CompletedTask;
         }
