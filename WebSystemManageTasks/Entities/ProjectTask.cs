@@ -31,11 +31,6 @@
         public Guid ProjectId { get; set; }
 
         /// <summary>
-        /// Идентификатор пользователя
-        /// </summary>
-        public Guid? UserId { get; set; }
-
-        /// <summary>
         /// Номер задачи в секции
         /// </summary>
         public int Order { get; set; }
@@ -55,7 +50,7 @@
         /// <summary>
         /// Пользователь, закрепленный за задачей
         /// </summary>
-        public User? User { get; set; }
+        public List<UserTask>? TaskUsers { get; set; }
 
         #endregion
     }
