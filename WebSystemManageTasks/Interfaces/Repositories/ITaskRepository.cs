@@ -3,7 +3,7 @@
 namespace WebSystemManageTasks.Interfaces.Repositories
 {
     /// <summary>
-    /// Интерфейс репозитория задачи
+    /// Интерфейс для доступа к данным задачи
     /// </summary>
     public interface ITaskRepository
     {
