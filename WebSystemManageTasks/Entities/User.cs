@@ -55,7 +55,7 @@
         /// <summary>
         /// Задачи, закрепленный за пользователем
         /// </summary>
-        public List<ProjectTask>? Tasks { get; set; }
+        public List<UserTask>? UserTasks { get; set; }
 
         #endregion
     }

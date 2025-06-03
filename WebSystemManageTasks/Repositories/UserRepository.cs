@@ -1,4 +1,6 @@
-﻿using WebSystemManageTasks.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using WebSystemManageTasks.Entities;
+using WebSystemManageTasks.Infrastructure.DatabaseContext;
 using WebSystemManageTasks.Interfaces.Repositories;
 
 namespace WebSystemManageTasks.Repositories
@@ -8,15 +10,22 @@ namespace WebSystemManageTasks.Repositories
     /// </summary>
     public class UserRepository : IUserRepository
     {
+        private readonly ApplicationDbContext _context;
+
+        public UserRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         /// <summary>
         /// Метод добавления пользователя в базу данных
         /// </summary>
         /// <param name="user">Пользователь</param>
         /// <returns></returns>
-        public Task AddAsync(User user)
+        public async Task AddAsync(User user)
         {
-            Data.Users.Add(user);
-            return Task.CompletedTask;
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
@@ -24,16 +33,10 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
         /// <returns></returns>
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(User user)
         {
-            var user = Data.Users.Find(x => x.Id == id);
-
-            if (user != null)
-            {
-                Data.Users.Remove(user);
-            }
-
-            return Task.CompletedTask;
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
@@ -41,27 +44,20 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="user">Пользователь с новыми данными</param>
         /// <returns></returns>
-        public Task UpdateAsync(User user)
+        public async Task UpdateAsync(User user)
         {
-            var oldUser = Data.Users.Find(x => x.Id == user.Id);
-
-            if (oldUser != null)
-            {
-                Data.Users.Remove(oldUser);
-                Data.Users.Add(user);
-            }
-
-            return Task.CompletedTask;
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
         }
 
         /// <summary>
         /// Метод получения всех пользователей
         /// </summary>
         /// <returns>Список пользователей</returns>
-        public Task<IEnumerable<User>> GetAllAsync()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            var users = Data.Users.Select(x => x);
-            return Task.FromResult(users);
+            var users = await _context.Users.ToListAsync();
+            return users;
         }
 
         /// <summary>
@@ -69,10 +65,10 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="id">Идентификатор пользователя</param>
         /// <returns>Пользователь</returns>
-        public Task<User?> GetByIdAsync(Guid id)
+        public async Task<User?> GetByIdAsync(Guid id)
         {
-            var user = Data.Users.FirstOrDefault(x => x.Id == id);
-            return Task.FromResult(user);
+            var user = await _context.Users.FindAsync(id);
+            return user;
         }
 
         /// <summary>
@@ -80,10 +76,10 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="email">Почта</param>
         /// <returns>Пользователь</returns>
-        public Task<User?> GetByEmailAsync(string email)
+        public async Task<User?> GetByEmailAsync(string email)
         {
-            var user = Data.Users.FirstOrDefault(x => x.Email == email);
-            return Task.FromResult(user);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            return user;
         }
 
         /// <summary>
@@ -91,10 +87,10 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="login">Логин</param>
         /// <returns>Пользователь</returns>
-        public Task<User?> ExistsByLoginAsync(string login)
+        public async Task<User?> ExistsByLoginAsync(string login)
         {
-            var user = Data.Users.FirstOrDefault(x => x.Login == login);
-            return Task.FromResult(user);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Login == login);
+            return user;
         }
     }
 }

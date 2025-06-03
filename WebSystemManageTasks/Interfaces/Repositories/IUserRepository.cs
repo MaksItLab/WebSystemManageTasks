@@ -22,11 +22,11 @@ namespace WebSystemManageTasks.Interfaces.Repositories
         Task UpdateAsync(User user);
 
         /// <summary>
-        /// Метод для удаления меользователя
+        /// Метод для удаления пользователя
         /// </summary>
-        /// <param name="id">Идентификатор пользователя</param>
+        /// <param name="user">Пользователь</param>
         /// <returns></returns>
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(User user);
 
         /// <summary>
         /// Метод получения пользователя по идентификатору
