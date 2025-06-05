@@ -68,7 +68,7 @@ namespace WebSystemManageTasks.Repositories
         /// </summary>
         /// <param name="id">Идентификатор</param>
         /// <returns>Задача</returns>
-        public async Task<ProjectTask?> GetTaskById(Guid id)
+        public async Task<ProjectTask?> GetTaskByIdAsync(Guid id)
         {
             var task = await _context.ProjectsTasks.FindAsync(id);
 

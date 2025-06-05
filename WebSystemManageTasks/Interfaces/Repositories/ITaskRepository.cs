@@ -39,6 +39,6 @@ namespace WebSystemManageTasks.Interfaces.Repositories
         /// </summary>
         /// <param name="id">Идентификатор задачи</param>
         /// <returns>Задача</returns>
-        Task<ProjectTask?> GetTaskById(Guid id);
+        Task<ProjectTask?> GetTaskByIdAsync(Guid id);
     }
 }

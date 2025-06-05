@@ -18,8 +18,12 @@ services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 services.AddScoped<IStatusTaskRepository, StatusTaskRepository>();
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<ITaskRepository, TaskRepository>();
+services.AddScoped<IUserTaskRepository, UserTaskRepository>();
+
+services.AddScoped<IUserTaskService, UserTaskService>();
 services.AddScoped<IAuthService, AuthService>();
 services.AddScoped<IPasswordHasherService, PasswordHasherService>();
+
 services.AddScoped<IJwtProvider, JwtProvider>();
 
 services.AddDbContext<ApplicationDbContext>(options =>
