@@ -15,6 +15,7 @@ var services = builder.Services;
 
 services.Configure<JwtOptions>(builder.Configuration.GetSection("JwtOptions"));
 
+services.AddScoped<IStatusTaskRepository, StatusTaskRepository>();
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<ITaskRepository, TaskRepository>();
 services.AddScoped<IAuthService, AuthService>();
