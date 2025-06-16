@@ -16,11 +16,6 @@
         public Guid TaskId { get; set; }
 
         /// <summary>
-        /// Идентификатор роли
-        /// </summary>
-        public Guid RoleId { get; set; }
-
-        /// <summary>
         /// Дата и время назначения пользователя на задачу
         /// </summary>
         public DateTime AssignedAt { get; set; }
@@ -36,11 +31,6 @@
         /// Задача
         /// </summary>
         public ProjectTask Task { get; set; }
-
-        /// <summary>
-        /// Роль пользователя
-        /// </summary>
-        public Role Role { get; set; }
 
         #endregion
     }

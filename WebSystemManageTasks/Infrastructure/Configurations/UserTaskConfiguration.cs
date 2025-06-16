@@ -19,10 +19,6 @@ namespace WebSystemManageTasks.Infrastructure.Configurations
                 .WithMany(t => t.TaskUsers)
                 .HasForeignKey(ut => ut.TaskId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(ut => ut.Role)
-                .WithMany()
-                .HasForeignKey(ut => ut.RoleId);
         }
     }
 }
